@@ -1,0 +1,58 @@
+#include <iostream>
+#include <bits/stdc++.h>
+#define v vector<int>
+#define ll long long
+#define pb push_back
+#define mp make_pair
+#define fast ios_base::sync_with_stdio(false); cin.tie(NULL);
+using namespace std;
+
+int main() {
+    fast;
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        ll n;
+        cin>>n;
+        map<ll  ,ll > m,m2;
+        ll x,y;
+	    for(ll i=0;i<4*n-1;i++)
+	    {
+	        cin>>x>>y;
+	        if(m.find(x) == m.end())
+	        {
+	           m.insert({x,1});
+	        }
+	        else
+	        {
+	           m[x]++;
+	        }
+	        if(m2.find(y) == m2.end())
+	        {
+	           m2.insert({y,1});
+	        }
+	        else
+	        {
+	           m2[y]++;
+	        }
+        }
+        for (auto& it : m)
+        {
+            if((it.second)%2 !=0)
+            {
+                cout<<it.first<<" ";
+                break;
+            }
+        }
+        for (auto& it : m2)
+        {
+            if((it.second)%2 !=0)
+            {
+                cout<<it.first;
+                break;
+            }
+        }
+        cout<<endl;
+    }
+}
