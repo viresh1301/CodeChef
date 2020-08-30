@@ -1,0 +1,59 @@
+#include <iostream>
+#include <bits/stdc++.h>
+#define v vector<int>
+using namespace std;
+
+int main() {
+	// your code goes here
+	int t;
+	cin>>t;
+	while(t--)
+	{
+	    int n,a,count=0;
+	    cin>>n;
+	    v vi,v2;
+	    for(int i=0;i<n;i++)
+	    {
+	        cin>>a;
+	        vi.push_back(a);
+	    }
+	    sort(vi.begin(),vi.end());
+	    for(int i=0;i<n-3;i++)
+	    {
+	        if(vi[i]==vi[i+1] && vi[i]==vi[i+2])
+	        {
+	           count++;
+	           break;
+	        }
+	    }
+	    if(vi[n-1]==vi[n-2] || count>0)
+	    {
+	       cout<<"NO"<<endl;
+	    }
+	    else 
+	    {
+	        cout<<"YES"<<endl;
+	        for(int i=0;i<vi.size()-1;i++)
+	        {
+	            if(vi[i]==vi[i+1])
+	            {
+	                v2.push_back(vi[i+1]);
+	                vi.erase(vi.begin()+ (i+1));
+	            }
+	        }
+	        sort(v2.begin(),v2.end(),greater<int>());
+	   		
+	        for(int i=0;i<vi.size();i++)
+	        {
+	            cout<<vi[i]<<" ";
+	        }
+	        for(int i=0;i<v2.size();i++)
+	        {
+	            cout<<v2[i]<<" ";
+	        }
+	        cout<<endl;
+	    }
+	
+	}
+	return 0;
+}
