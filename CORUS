@@ -1,0 +1,89 @@
+C++
+#include <iostream>
+#include <bits/stdc++.h>
+#define ll long long 
+
+using namespace std;
+
+int main() {
+	// your code goes here
+	ll int t;
+	cin>>t;
+	while(t--)
+	{
+	    ll int n ,q;
+	    cin>>n>>q;
+	    string s;
+	    cin>>s;
+	    map<char ,ll int> m;
+	    for(int i=0;i<n;i++)
+	    {
+	        if(m.find(s[i]) == m.end())
+	        {
+	            m.insert({s[i],1});
+	        }
+	        else
+	        {
+	            m[s[i]]++;
+	        }
+	    }
+	    while(q--)
+	    {
+	        ll int num,queue=0;
+	        cin>>num;
+	        for (auto& it : m)
+	        {
+	            if(num<=it.second)
+	            {
+	                queue = queue + (it.second - num);
+	            }
+	        }
+	        cout<<queue<<endl;
+	    }    
+	}
+	return 0;
+}
+
+JAVA 
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+/* Name of the class has to be "Main" only if the class is public. */
+class Codechef
+{
+	public static void main (String[] args) throws java.lang.Exception
+	{
+		Scanner in = new Scanner(System.in);
+		int testCases= in.nextInt();
+		for(int i=0;i<testCases;i++){
+		    int strSize= in.nextInt();
+		    int queries= in.nextInt();
+		    String str = in.next();
+		    Map<String, Long> map = new HashMap<>();
+		        String[] strArray=str.split("");
+		        for(int k=0;k<strArray.length;k++) {
+		            String item =strArray[k];
+		            Long mapValue = map.get(item);
+		            if(null != mapValue) {
+		                map.put(item, mapValue+1);
+		            } else{
+		                map.put(item, 1l);
+		            }
+		        }
+		    for(int j=0;j<queries;j++){
+		        long numOfCenters= in.nextLong();
+		        
+		        long queue = 0;
+		        for (Map.Entry<String,Long> entry : map.entrySet()) {
+		            if(entry.getValue()>numOfCenters) {
+		                queue = queue + (entry.getValue()-numOfCenters);
+		            }
+		        };
+		        System.out.println(queue);
+		    }
+		}
+		
+	}
+}
+
